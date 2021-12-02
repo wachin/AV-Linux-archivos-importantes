@@ -1,0 +1,10 @@
+
+
+https://discourse.ardour.org/t/av-linux-2020-4-10-released/103270/21
+
+Further explanation in Page 77 of the AV Linux User Manual: http://www.bandshed.net/pdf/AVL2020UserManual.pdf 4
+
+
+https://www.alexandrostheodotou.com/setting-up-jack-on-a-guix-system.html
+
+
