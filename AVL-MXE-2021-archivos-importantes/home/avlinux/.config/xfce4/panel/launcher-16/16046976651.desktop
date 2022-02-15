@@ -1,0 +1,18 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=AVL-MXE Assistant
+GenericName=AVL-MXE Assistant
+Comment=Assists With Various System Settings
+Exec=avlassistant
+Icon=avl-mxe-assistant
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=SystemBackup;Applications;GTK;System;Settings
+NotShowIn=KDE
+X-KDE-SubstituteUID=true
+GenericName[en_US]=AVL-MXE Assistant
+X-XFCE-Source=file:///usr/share/applications/avcontrolpanel.desktop
+Path=
+StartupNotify=false

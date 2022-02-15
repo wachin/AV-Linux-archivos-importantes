@@ -1,0 +1,14 @@
+show_frame=false
+fg_set=false
+bg_set=false
+timezone=
+width_set=false
+height_set=true
+lines_vertically=true
+rotation=0
+data0=%l:%M
+font0=Sui Generis 16
+tooltip=%c
+hib_timing=false
+height=48
+

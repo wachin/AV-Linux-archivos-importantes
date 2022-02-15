@@ -1,0 +1,141 @@
+#
+# Based on conky-jc and the default .conkyrc.
+# Modded for AV Linux MX Edition
+# INCLUDES:
+# - tail of /var/log/messages
+# - netstat connections to your computer
+#
+# -- Pengo (conky@pengo.us)
+#
+
+# Create own window instead of using desktop (required in nautilus)
+own_window yes
+own_window_type desktop
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# fiddle with window
+use_spacer none
+use_xft no
+
+# Update interval in seconds
+update_interval 2.0
+
+# Minimum size of text area
+ minimum_size 180
+ maximum_width 220
+# Draw shades?
+draw_shades no
+
+# Text stuff
+draw_outline yes # amplifies text if yes
+draw_borders no
+font arial
+
+uppercase no # set to yes if you want all text to be in uppercase
+
+# Stippled borders?
+stippled_borders 0
+
+# border margins
+border_margin 9
+
+# border width
+border_width 10
+
+# Default colors and also border colors, black90 == #e5e5e5
+default_color white
+# Text settings #
+use_xft yes
+xftfont caviar dreams:size=8
+xftalpha 0.5
+own_window_colour 000000
+own_window_transparent yes
+
+# Text alignment, other possible values are commented
+alignment top_right
+#alignment top_right
+#alignment bottom_left
+#alignment bottom_right
+
+# Gap between borders of screen and text
+gap_x 64
+gap_y 48
+
+# stuff after 'TEXT' will be formatted on screen
+
+own_window_argb_value 0
+own_window_argb_visual yes
+minimum_size 0 0
+TEXT
+${alignc}${color e6e6e6}${font SuiGeneris:pixelsize=32}${time %H:%M}
+${alignc}${font GE Inspira:pixelsize=20}${time %a}, ${color 5687cd}${time %d} ${color e6e6e6}${font GE Inspira:pixelsize=22}${time %b} ${time %Y}
+$color
+#Image Goes Here..
+#${image MX.png -p 64,80 -s 64x64}
+${color #5687cd}SYSTEM${hr 1}$color
+${font Arial:size=9}$nodename
+$sysname $kernel $machine
+${color #5687cd}CPU ${hr 1}$color
+${freq}MHz
+Load: ${loadavg}   
+Uptime: ${uptime}
+ ${alignc}CPU temp${color0} ${hwmon temp 1:}C
+ ${color}Core 1 Usage:$color ${alignc} ${cpu cpu1}% ${color}${cpubar cpu1}
+ ${color}Core 2 Usage:$color ${alignc} ${cpu cpu2}% ${color}${cpubar cpu2}
+#${color}Core 3 Usage:$color ${alignc} ${cpu cpu3}% ${color}${cpubar cpu3}
+#${color}Core 4 Usage:$color ${alignc} ${cpu cpu4}% ${color}${cpubar cpu4}
+#${color}Core 5 Usage:$color ${alignc} ${cpu cpu5}% ${color}${cpubar cpu5}
+#${color}Core 6 Usage:$color ${alignc} ${cpu cpu6}% ${color}${cpubar cpu6}
+#${color}Core 7 Usage:$color ${alignc} ${cpu cpu7}% ${color}${cpubar cpu7} 
+#${color}Core 8 Usage:$color ${alignc} ${cpu cpu8}% ${color}${cpubar cpu8}
+#${color}Core 9 Usage:$color ${alignc} ${cpu cpu9}% ${color}${cpubar cpu9}
+#${color}Core 10 Usage:$color ${alignc} ${cpu cpu10}% ${color}${cpubar cpu10} 
+#${color}Core 11 Usage:$color ${alignc} ${cpu cpu11}% ${color}${cpubar cpu11}
+#${color}Core 12 Usage:$color ${alignc} ${cpu cpu12}% ${color}${cpubar cpu12}  
+#${color}Core 14 Usage:$color ${alignc} ${cpu cpu14}% ${color}${cpubar cpu14}
+#${color}Core 15 Usage:$color ${alignc} ${cpu cpu15}% ${color}${cpubar cpu15}
+#${color}Core 16 Usage:$color ${alignc} ${cpu cpu16}% ${color}${cpubar cpu16}
+#${color}Core 17 Usage:$color ${alignc} ${cpu cpu17}% ${color}${cpubar cpu17}
+#${color}Core 18 Usage:$color ${alignc} ${cpu cpu18}% ${color}${cpubar cpu18}
+#${color}Core 19 Usage:$color ${alignc} ${cpu cpu19}% ${color}${cpubar cpu19} 
+#${color}Core 20 Usage:$color ${alignc} ${cpu cpu20}% ${color}${cpubar cpu20}
+#${color}Core 21 Usage:$color ${alignc} ${cpu cpu21}% ${color}${cpubar cpu21}
+#${color}Core 22 Usage:$color ${alignc} ${cpu cpu22}% ${color}${cpubar cpu22} 
+#${color}Core 23 Usage:$color ${alignc} ${cpu cpu23}% ${color}${cpubar cpu23}
+#${color}Core 24 Usage:$color ${alignc} ${cpu cpu24}% ${color}${cpubar cpu24}  
+ ${cpugraph 000000 5687cd}
+ ${color #5687cd}NAME             PID       CPU%      MEM%$color
+ ${top name 1} ${top pid 1}   ${top cpu 1}    ${top mem 1}
+ ${top name 2} ${top pid 2}   ${top cpu 2}    ${top mem 2}
+ ${top name 3} ${top pid 3}   ${top cpu 3}    ${top mem 3}
+ ${top name 4} ${top pid 4}   ${top cpu 4}    ${top mem 4}
+
+${color #5687cd}MEMORY / DISK ${hr 1}$color
+ RAM:   $mem   ${membar 6}$color
+ Swap:  $swapperc%   ${swapbar 6}$color
+
+ Root:  ${fs_used_perc /}%   ${fs_bar 6 /}$color
+ Home:  ${fs_used_perc /home}%   ${fs_bar 6 /home}$color
+
+ ${color}DiskI/O:${color}${diskio}
+ ${diskiograph 000000 8A9A5B}
+
+${color #5687cd}NETWORK (${addr wlan0}) ${hr 1}$color
+ Down: $color${downspeed wlan0} k/s ${alignr}Up: ${upspeed wlan0} k/s
+ ${downspeedgraph wlan0 25,100 000000 9f440d} ${alignr}${upspeedgraph wlan0
+25,100 000000 AA8E39}$color
+ Total: ${totaldown wlan0} ${alignr}Total: ${totalup wlan0}
+ Inbound: ${tcp_portmon 1 32767 count} Outbound: ${tcp_portmon 32768
+ 61000 count}${alignr}Total: ${tcp_portmon 1 65535 count}
+#${alignc}Motherboard temp${color0} ${hwmon temp 2:}C
+ 
+ #OPTIONAL FOR NVIDIA HARDWARE
+ #${#FF0000}GPU Temp: ${alignr}${#FF0000}${nvidia temp} C
+ #${#FF0000}Fan Speed: ${alignr}${#FF0000}${execi 5 nvidia-settings -q [fan:0]/GPUCurrentFanSpeed -t} %
+ #${#FF0000}GPU Clock: ${alignr}${#FF0000}${nvidia gpufreq} MHz
+ #${#FF0000}Mem Clock: ${alignr}${#FF0000}${nvidia memfreq} MHz
+ #${#FF0000}Mem Used: ${alignr}${#FF0000}${execi 5 nvidia-settings -q [gpu:0]/UsedDedicatedGPUMemory -t} / ${exec nvidia-settings -q [gpu:0]/TotalDedicatedGPUMemory -t} MiB

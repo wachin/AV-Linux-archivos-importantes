@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=OpenBox
+Comment=XFWM4 to OpenBox
+Exec=openbox --replace
+StartupNotify=false
+Terminal=false
+Icon=/usr/share/icons/openbox.png
+Hidden=false 
