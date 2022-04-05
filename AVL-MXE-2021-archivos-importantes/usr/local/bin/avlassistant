@@ -1,0 +1,104 @@
+#! /usr/bin/gtkdialog -e
+
+# AV Linux GTKDialog Assistant by GMaq
+# Adapted from Remastersys-LXDE-Control-Panel Copyright 2009 by Tony Brijeski
+# This version is for the 64bit XFCE4-only variant of AVL-MXE
+#
+#
+#
+
+export MAIN_DIALOG='
+
+  <window default-width="300" default-height="600" window_position="1" space-expand="true" space-fill="true" title="AVL-MXE Assistant" icon-name="preferences-system" decorated="true">
+
+  <vbox> 
+   <notebook labels="Setup | Misc. | Update | Wine/LinVST | SYS-Editor"> 
+
+  <vbox> 
+  <text><label>""</label></text>
+  <text use-markup="true"><label>"<span color='"'#C6C9CC'"'><u><b>Quick Setup</b></u></span>"</label></text>
+  <text><label>""</label></text>
+  <button use-stock="true" image-position="0"><input file icon="preferences-desktop-theme"></input><label>Set Theme</label><action>xfce4-appearance-settings</action></button>
+  <button use-stock="true" image-position="0"><input file icon="preferences-desktop-theme"></input><label>Set Window Theme</label><action>obconf</action></button>
+  <button use-stock="true" image-position="0"><input file icon="preferences-desktop-theme"></input><label>Set Wallpaper</label><action>nitrogen</action></button> 
+  <button use-stock="true" image-position="0"><input file icon="compton"></input><label>Compositor Settings</label><action>compton-conf</action></button>
+  <button use-stock="true" image-position="0"><input file icon="qtconfig-qt4"></input><label>QT4 Settings</label><action>qtconfig-qt4</action></button>
+  <button use-stock="true" image-position="0"><input file icon="qtconfig-qt4"></input><label>QT5 Settings</label><action>qt5ct</action></button>
+  <button use-stock="true" image-position="0"><input file icon="preferences-system"></input><label>Refresh Icon Theme Caches</label><action>gksu xfce4-terminal -H --title="Refreshing Icon Theme Caches..." -e "iconcache"</action></button>
+  <button use-stock="true" image-position="0"><input file icon="file-manager"></input><label>Run Scripts in Thunar</label><action>xfce4-terminal -H --title="Run Scripts in Thunar..." -e "thunarscript"</action></button>
+  <text><label>""</label></text>
+  </vbox>
+
+  <vbox> 
+  <text><label>""</label></text>
+  <text use-markup="true"><label>"<span color='"'#C6C9CC'"'><u><b>System Utilities</b></u></span>"</label></text>
+  <text><label>""</label></text>
+  <button use-stock="true" image-position="0"><input file icon="preferences-system"></input><label>Show System Resources</label><action>xfce4-terminal -H -e bpytop</action></button>
+  <button use-stock="true" image-position="0"><input file icon="cpu"></input><label>Set CPU Governor</label><action>CPUfreq</action></button>
+  <button use-stock="true" image-position="0"><input file icon="xfce4-session"></input><label>Autostart Applications</label><action>xfce4-session-settings</action></button> 
+  <button use-stock="true" image-position="0"><input file icon="window-close"></input><label>X-Kill</label><action>xkill &</action></button>
+  <button use-stock="true" image-position="0"><input file icon="alsamixergui"></input><label>Restart PulseAudio</label><action>xfce4-terminal -H --title="Cycling PulseAudio..." -e "pulsecycle"</action></button>
+  <button use-stock="true" image-position="0"><input file icon="qjackctl"></input><label>Jackd-Kill</label><action>xfce4-terminal -H --title="Killing All JACK Processes" -e "killall -9 jackd jackdbus"</action></button>
+  <button use-stock="true" image-position="0"><input file icon="preferences-system"></input><label>RT Diagnostics</label><action>/usr/local/bin/runrtcqs</action></button>
+  <button use-stock="true" image-position="0"><input file icon="package-remove"></input><label>Remove Demo Software</label><action>xfce4-terminal -H --title="Removing Demoware..." -e "gksu demoremove"</action></button>
+  <text><label>""</label></text>
+  </vbox>
+
+  <vbox>
+  <text><label>""</label></text>
+  <text use-markup="true"><label>"<span color='"'#C6C9CC'"'><u><b>Update Browsers | GPG Keys</b></u></span>"</label></text>
+  <text><label>""</label></text>
+  <button use-stock="true" image-position="0"><input file icon="firefox"></input><label>Update Mozilla Firefox</label><action>xfce4-terminal -H --title="Updating Mozilla Firefox..." -e "gksu firefoxupdate"</action></button> 
+  <button use-stock="true" image-position="0"><input file icon="google-chrome"></input><label>Update Google Chrome</label><action>xfce4-terminal -H --title="Updating Google Chrome..." -e "gksu chromeupdate"</action></button> 
+  <button use-stock="true" image-position="0"><input file icon="thunderbird"></input><label>Update Mozilla Thunderbird</label><action>xfce4-terminal -H --title="Updating Mozilla Thunderbird..." -e "gksu thunderbirdupdate"</action></button>
+  <button use-stock="true" image-position="0"><input file icon="application-pgp-signature"></input><label>Update Liquorix GPG Key</label><action>xfce4-terminal -H --title="Updating Liquorix GPG Key..." -e "gksu liquorixgpg"</action></button>  
+  <button use-stock="true" image-position="0"><input file icon="application-pgp-signature"></input><label>Update Spotify GPG Key</label><action>xfce4-terminal -H --title="Updating Spotify GPG Key..." -e "gksu spotifygpg"</action></button>
+  <button use-stock="true" image-position="0"><input file icon="application-pgp-signature"></input><label>Update WineHQ GPG Key</label><action>xfce4-terminal -H --title="Updating WineHQ GPG Key..." -e "gksu winehqgpg"</action></button> 
+  <button use-stock="true" image-position="0"><input file icon="application-pgp-signature"></input><label>Update Docker CE GPG Key</label><action>xfce4-terminal -H --title="Updating Docker CE GPG Key..." -e "gksu dockergpg"</action></button>
+  <text><label>""</label></text>
+  </vbox>
+
+  <vbox scrollable="true" vscrollbar-policy="1">
+  <text><label>""</label></text>
+  <text use-markup="true"><label>"<span color='"'#C6C9CC'"'><u><b>Wine | LinVST | WineASIO</b></u></span>"</label></text>
+  <text><label>""</label></text>
+  <button><input file icon="wine"></input><label>Configure Wine-Staging</label><action>winecfg</action></button>
+  <button><input file icon="wine"></input><label>Configure Winetricks</label><action>winetricks</action></button>
+  <text><label>""</label></text>
+  <text use-markup="true"><label>"<span color='"'#C6C9CC'"'>Set up LinVST as Current User</span>"</label></text>
+  <text use-markup="true"><label>"<span color='"'#C6C9CC'"'>*linvst.so is located in /usr/share/LinVst</span>"</label></text>
+  <button><input file icon="preferences-system"></input><label>Set up LinVST</label><action>linvstconvert</action></button>
+  <button><input file icon="preferences-system"></input><label>Set up LinVST (Subfolders)</label><action>linvstconverttree</action></button>
+  <text><label>""</label></text>
+  <text use-markup="true"><label>"<span color='"'#C6C9CC'"'>Set up LinVST as Root</span>"</label></text>
+  <text use-markup="true"><label>"<span color='"'#C6C9CC'"'>*linvst.so is located in /usr/share/LinVst</span>"</label></text>
+  <button><input file icon="preferences-system"></input><label>Set up LinVST (As Root)</label><action> gksu linvstconvert</action></button> 
+  <button><input file icon="preferences-system"></input><label>Set up LinVST (Subfolders As Root)</label><action> gksu linvstconverttree</action></button>
+  <text><label>""</label></text>
+  <text use-markup="true"><label>"<span color='"'#C6C9CC'"'>Start WineASIO for 32 or 64bit Apps</span>"</label></text>
+  <text use-markup="true"><label>"<span color='"'#C6C9CC'"'>(Close Xterm when the dll starts)</span>"</label></text>
+  <button><input file icon="wine"></input><label>Run WineASIO for 64bit Apps</label><action>xfce4-terminal -H --title="WineASIO 64bit" -e "wine64 regsvr32 wineasio.dll"</action></button> 
+  <button><input file icon="wine"></input><label>Run WineASIO for 32bit Apps</label><action>xfce4-terminal -H --title="WineASIO 32bit" -e "regsvr32 wineasio.dll"</action></button> 
+  </vbox>
+
+  <vbox scrollable="true" vscrollbar-policy="1">
+  <text><label>""</label></text>
+  <text use-markup="true"><label>"<span color='"'#C6C9CC'"'><u><b>Edit System Defaults</b></u></span>"</label></text>
+  <text><label>""</label></text>
+  <button use-stock="true" image-position="0"><input file icon="gedit"></input><label>Edit APT Sources List</label><action>gksu mousepad /etc/apt/sources.list</action></button> 
+  <button use-stock="true" image-position="0"><input file icon="gedit"></input><label>Edit GRUB2 Options</label><action>gksu mousepad /etc/default/grub</action></button> 
+  <button use-stock="true" image-position="0"><input file icon="gedit"></input><label>Edit Keyboard Settings</label><action>gksu mousepad /etc/default/keyboard</action></button> 
+  <button use-stock="true" image-position="0"><input file icon="gedit"></input><label>Edit Default CPU Governor</label><action>gksu mousepad /etc/default/cpufrequtils</action></button> 
+  <button use-stock="true" image-position="0"><input file icon="gedit"></input><label>Edit Realtime IRQ Priorities</label><action>gksu mousepad /etc/default/rtirq</action></button> 
+  <button use-stock="true" image-position="0"><input file icon="gedit"></input><label>Edit SLiM Login Options</label><action>gksu mousepad /etc/slim.conf</action></button>
+  <button use-stock="true" image-position="0"><input file icon="gedit"></input><label>Edit QT5 Theming Config</label><action>gksu mousepad /etc/X11/Xsession.d/56xfce4-qtconfig</action></button>
+  <button use-stock="true" image-position="0"><input file icon="gedit"></input><label>Edit /etc/rc.local</label><action>gksu mousepad /etc/rc.local</action></button> 
+  <button use-stock="true" image-position="0"><input file icon="gedit"></input><label>Edit this Utility!</label><action>gksu mousepad /usr/local/bin/avlassistant</action></button> 
+  </vbox>
+
+  </notebook> 
+
+  <button><input file icon="exit"></input><label>Exit</label><action type="exit">exit 0</action></button>
+  </vbox>
+  </window>
+'
